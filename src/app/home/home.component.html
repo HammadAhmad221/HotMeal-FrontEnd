@@ -1,9 +1,9 @@
-<div class="bg-wihite mx-4 w-11/12 mt-4  mb-12 mx-auto min-h-screen">
+<div class="bg-wihite mx-4 w-11/12 mt-4  mb-12  min-h-screen min-w-screen">
     <div class="pl-4 lg:pt-8 pt-4">
     <img src="assets/hotemwal.png" class="h-8 w-18 ">
     </div>
     <div class="lg:flex  jusstify-center ">
-   <div class="lg:w-1/2 mx-4 my-4 ">   
+   <div class="lg:w-1/2 mx-4 my-4 ">
     <label for="simple-search" class="sr-only">Search</label>
     <div class="relative w-full ">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -21,68 +21,23 @@
     <p class="lg:pl-4  not-italic font-semibold text-2xl leading-9 text-black font-[Poppins] mx-2">Featured Resturant</p>
 </div>
 
-<div class="lg:p-4 p-2 bg-gray-700">
-    <div class="flex   min-w-full overflow-x-scroll overflow-x-visible  bg-red-400" >
 
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
+
+    <div class="flex gap-2 flex-row w-screen max-h-96  overflow-x-scroll mx-5">
+
+        <div class="w-96 h-96 flex-shrink-0 flex-grow-0" *ngFor="let rest of featuredRestaurants">
+            <img src="assets/hamburger.png"  class="rounded-lg w-full h-70">
             <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
             <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
         </div>
 
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
 
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
 
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
 
-        <div class="rest-item">
-            <img src="assets/hamburger.png"  class="rounded-lg">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-        
-        
+
     </div>
-     
-</div>
+
+
 <!-- second grid start here -->
 
 <p class="lg:pl-6 not-italic font-semibold text-2xl leading-9 text-black font-[Poppins]" >Recommended Resturant</p>
