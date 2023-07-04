@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --configuration production && aws s3 rm s3://hotmeal-web/ --recursive --profile ammaar && aws s3 cp dist/hotmeal-web/ s3://hotmeal-web/ --recursive --profile ammaar && aws cloudfront create-invalidation --distribution-id E1ZROZ1HSQTL6A --paths '/*' --profile ammaar"
   },
   "private": true,
   "dependencies": {
