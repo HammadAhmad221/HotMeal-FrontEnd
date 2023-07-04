@@ -8,22 +8,10 @@ import { RestaurantPageComponent } from './restaurant-page/restaurant-page.compo
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DashboardComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HttpClient
-   
-  ],
+  declarations: [AppComponent, HomeComponent, DashboardComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
