@@ -9,14 +9,12 @@ export class DashboardComponent {
   ngOnInit(): void {
     // this.toggleCondition()
   }
-
   focusedItem: string | undefined;
-
   setFocus(item: string): void {
     this.focusedItem = item;
   }
-  dashboard: boolean = true;
-  resturant:boolean=false;
+  // dashboard: boolean = true;
+  // resturant:boolean=false;
 
 
   // toggleCondition(): void {
@@ -36,6 +34,7 @@ export class DashboardComponent {
       this.activeButton = this.activeButton === 'button2' ? 'button1' : 'button2';
     }
   }
+  showValue: boolean | undefined;
   }
  
 
