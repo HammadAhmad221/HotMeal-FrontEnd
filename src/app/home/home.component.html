@@ -30,27 +30,51 @@
 
 
 
-<section  >
-<!-- grid start here -->
+<!-- <section  >
 <div class="mx-auto  mx-5 mb-2">
     <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins] ">Featured Resturant</p>
 </div>
     <div   class="flex gap-2 flex-row   max-h-96 mx-5  overflow-x-scroll ">
-    <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of featuredRestaurants">
+    <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants">
             <img src="assets/hamburger.png"  class="rounded-lg w-full h-60">
             <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
             <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
         </div>
     </div> 
-</section>
-<!-- second grid start here -->
+</section> -->
+
+<!-- <section>
+    <div class="mx-auto mx-5 mb-2">
+      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">Featured Restaurant</p>
+    </div>
+    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants">
+        <img src="https://hotmeal.s3.us-west-2.amazonaws.com/{{rest.photos[0]}}" class="rounded-lg w-60 h-60" alt="image not found">
+        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
+        <p class="not-italic font-semibold font-[Poppins] text-gray-400">{{ rest.phoneNo}}</p>
+      </div>
+    </div>
+  </section> -->
+  <section>
+    <div class="mx-auto mx-5 mb-2">
+      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">Featured Restaurant</p>
+    </div>
+    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants$ | async">
+        <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60" alt="Resturant Image">
+        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
+      </div>
+    </div>
+  </section>
+  
+
 <section  >
     <!-- grid start here -->
     <div class="mx-auto  mx-5 mt-2">
         <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins] ">Recommanded Resturant</p>
     </div>
         <div   class="flex gap-2 flex-row   max-h-96 mx-5  overflow-x-scroll ">
-        <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of featuredRestaurants">
+        <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants$ | async">
                 <img src="assets/hamburger.png"  class="rounded-lg w-full h-60">
                 <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
                 <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
@@ -63,76 +87,6 @@
 <div class="mx-5  ">
 <p class="lg:pl-2 pl-10 not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]" >All Resturant</p>
 <div class="grid lg:grid-cols-5  md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mb-4 pl-0 pr-0">
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/turkey_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Turkey Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 13.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/EIK_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">EIK Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 6.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/veggei_burger.png" class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Veggie Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/turkey_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Turkey Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 13.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/EIK_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">EIK Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 6.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/turkey_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Turkey Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 13.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/EIK_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">EIK Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 6.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/veggei_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Veggie Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/turkey_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Turkey Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 13.99</p>
-    </div>
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/EIK_burger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">EIK Burger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 6.99</p>
-    </div>
     <div class="mx-auto lg:mx-0">
         <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
         <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>

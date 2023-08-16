@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpService } from './http.service';
+//import { HttpClient } from '@angular/common/http';
+import { HttpService } from './restaurant-api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,11 +10,14 @@ export class AppComponent implements OnInit {
   title = 'hotmeal-web';
   latitude: number | undefined;
   longitude: number | undefined;
+  restaurants: any[] = [];
 
-  constructor(public httpService: HttpService) {}
+    constructor(public httpService: HttpService) {  }
 
   ngOnInit(): void {
-    this.getCurrentLocation();
+    //this.getCurrentLocation();
+    //this.getAddress();
+    //this.getResturants();//to see it on web page
   }
   getCurrentLocation() {
     if (navigator.geolocation) {
@@ -23,6 +26,7 @@ export class AppComponent implements OnInit {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
           this.getAddress();
+          //this.getResturants();
           console.log(this.latitude, this.longitude);
         },
         (error) => {
@@ -41,4 +45,15 @@ export class AppComponent implements OnInit {
         console.log('response: ', response);
       });
   }
+  // getResturants() {
+  //   this.httpService.getResturants(this.longitude||0 ,this.latitude||0).subscribe((response:any)=>{
+       
+  //       console.log('Response:', response);
+  //       console.log(this.latitude,this.longitude);
+  //       this.restaurants = response.data;  
+  //   }, error => {
+  //     console.error('Error:', error);
+  //   });
+  // }
+   
 }
