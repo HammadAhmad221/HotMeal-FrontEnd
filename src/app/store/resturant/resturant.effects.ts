@@ -13,7 +13,7 @@
 // //       allResturants: action.payload,
 // //     }))
 // //   );
-  
+
 
 // // export function ResturantReducer(state: ResturantState, action: any) {
 // //   return resturantReducer(state, action);
@@ -71,8 +71,7 @@ export class ResturantEffects {
         console.log('Fetching resturants with request:', action.request); // Log the request payload
         return this.httpService.getResturants(action.request).pipe( // Pass the request payload to the service
           map((data: IRestaurant[]) =>
-          //log for testing here
-          console.log(   ResturantActions.fetchAllResturantsSuccess({ payload: data }) )
+          ({ type: ResturantActions.fetchAllResturantsSuccess, payload:data})
           ),
           catchError((error) => {
             console.error(error);

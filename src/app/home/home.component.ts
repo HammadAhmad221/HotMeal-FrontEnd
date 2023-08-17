@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { select } from '@ngrx/store';  // Import the select function
 import { getAllResturants } from '../store/resturant/resturant.selector';
 import { fetchAllResturants } from '../store/resturant/resturant.action';
-import { IRestaurant } from '../models/resturant.model';
 import { IGetResturantRequest } from '../models/request/getResturant.request';
 
 @Component({
@@ -13,18 +10,25 @@ import { IGetResturantRequest } from '../models/request/getResturant.request';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  resturants$: Observable<IRestaurant[]> = this.store.pipe(select(getAllResturants)); // Use the selector directly
-
+  allRestuarants:any[]=[];
   constructor(private store: Store) {}
 
   ngOnInit(): void {
    const request:IGetResturantRequest={
-    latitude: 74.3436,
-    longitude: 31.5497,
+    latitude:31.5497,
+    longitude: 74.3436 ,
     maxOrdersPerMonth: 0,
          featured: true,
          plan: 0,
    }
-   console.log(this.store.dispatch(fetchAllResturants({request:request}))); // Dispatch the action to fetch restaurants
+
+   this.store.select(getAllResturants()).subscribe((data)=>{
+      if(data!=null && data.length>0){
+        this.allRestuarants=data;
+      }else{
+        this.store.dispatch(fetchAllResturants({request:request}));
+      }
+   });
+
   }
 }
