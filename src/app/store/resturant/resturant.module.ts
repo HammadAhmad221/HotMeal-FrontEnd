@@ -21,4 +21,4 @@ import { ResturantEffects } from './resturant.effects';
     EffectsModule
   ]
 })
-export class ProjectStoreModule { }
+export class ResturantStoreModule { }

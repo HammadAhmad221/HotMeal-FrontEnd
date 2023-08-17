@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { select } from '@ngrx/store';  // Import the select function
 import { getAllResturants } from '../store/resturant/resturant.selector';
 import { fetchAllResturants } from '../store/resturant/resturant.action';
-import { HttpService } from 'src/app/restaurant-api.service';
 import { IRestaurant } from '../models/resturant.model';
+import { IGetResturantRequest } from '../models/request/getResturant.request';
 
 @Component({
   selector: 'app-restaurant',
@@ -13,20 +13,18 @@ import { IRestaurant } from '../models/resturant.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  resturants$!: Observable<IRestaurant[]>; // No need to initialize here
+  resturants$: Observable<IRestaurant[]> = this.store.pipe(select(getAllResturants)); // Use the selector directly
 
-  constructor(private store: Store, private httpService: HttpService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.resturants$ = this.store.select(getAllResturants); // Use the select function
-
-    this.httpService.getResturants().subscribe(
-      (data: IRestaurant[]) => {
-        this.store.dispatch(fetchAllResturants({ payload: data }));
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
+   const request:IGetResturantRequest={
+    latitude: 74.3436,
+    longitude: 31.5497,
+    maxOrdersPerMonth: 0,
+         featured: true,
+         plan: 0,
+   }
+   console.log(this.store.dispatch(fetchAllResturants({request:request}))); // Dispatch the action to fetch restaurants
   }
 }
