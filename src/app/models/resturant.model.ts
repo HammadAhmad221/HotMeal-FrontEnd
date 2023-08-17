@@ -1,5 +1,5 @@
-export interface RestaurantData {
-    // [key: string]: any;
+export interface IRestaurant {
+    // [key: string]: any
     name: string;
     rating: number;
     views: number;

@@ -1,64 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../restaurant-api.service';
 import { Store } from '@ngrx/store';
-import { fetchDataSuccess } from '../data.actions';
-import { selectRestaurants } from '../data.selectors';
 import { Observable } from 'rxjs';
-import { RestaurantData } from '../data.state';
+import { select } from '@ngrx/store';  // Import the select function
+import { getAllResturants } from '../store/resturant/resturant.selector';
+import { fetchAllResturants } from '../store/resturant/resturant.action';
+import { HttpService } from 'src/app/restaurant-api.service';
+import { IRestaurant } from '../models/resturant.model';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-restaurant',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  resturants$!: Observable<IRestaurant[]>; // No need to initialize here
 
-  restaurants$: Observable<RestaurantData[]>;
-
-  // Initialize with default values
-  latitude: number | undefined;
-  longitude: number | undefined;
-
-  constructor(public httpService: HttpService, private store: Store) {
-    this.restaurants$ = this.store.select(selectRestaurants);
-  }
+  constructor(private store: Store, private httpService: HttpService) {}
 
   ngOnInit(): void {
-    this.getCurrentLocation();
-  }
+    this.resturants$ = this.store.select(getAllResturants); // Use the select function
 
-  getCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
-          this.getResturants(this.longitude, this.latitude);
-        },
-        (error) => {
-          console.log('Error occurred while retrieving location:', error);
-        }
-      );
-    } else {
-      console.log('Geolocation is not supported by this browser.');
-    }
-  }
-
-  getResturants(longitude: number, latitude: number) {
-    this.httpService.getResturants(longitude, latitude).subscribe(
-      (response: any) => {
-        console.log('Response:', response);
-        if (response ) {
-          // Dispatch the action only once after receiving the response
-          this.store.dispatch(fetchDataSuccess({ data: response }));
-        } else {
-          console.error('Invalid API response structure.');
-        }
+    this.httpService.getResturants().subscribe(
+      (data: IRestaurant[]) => {
+        this.store.dispatch(fetchAllResturants({ payload: data }));
       },
-      (error) => {
-        console.error('Error:', error);
+      (error: any) => {
+        console.error(error);
       }
     );
   }
 }
-

@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { fetchDataSuccess } from './data.actions'; // Import your fetchDataSuccess action
+import { fetchAllResturants } from 'src/app/store/resturant/resturant.action'; // Import your fetchDataSuccess action
+import { IRestaurant } from './models/resturant.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,24 +25,27 @@ export class HttpService {
   }
   // ... (rest of the code)
 
-  getResturants(lat: number, long: number): Observable<any> {
-    const url = `${this.baseURL}/resturants/getnearbyresturants`;
-    const requestBody = {
-      longitude: lat,
-      latitude: long,
-      maxOrdersPerMonth: 0,
-      featured: true,
-      plan: 0,
-    };
-  
-    return this.http.post<[]>(url, requestBody).pipe(
-      map((response: any) => {
-        //console.log('Response:', response);
-        const data = response.data; // Assuming the data is an array of RestaurantData
-        this.store.dispatch(fetchDataSuccess({ data }));
-        return data;
+  getResturants(): Observable<any> {
+    return this.http.get('https://ipapi.co/json/').pipe(
+      map((locationData: any) => {
+        const latitude = locationData.latitude;
+        const longitude = locationData.longitude;
+        const url = `${this.baseURL}/resturants/getnearbyresturants`;
+        const requestBody = {
+          longitude: latitude,
+          latitude: longitude,
+          maxOrdersPerMonth: 0,
+          featured: true,
+          plan: 0,
+        };
+
+        return this.http.post<IRestaurant>(url, requestBody).pipe(
+          map((response: any) => {
+            this.store.dispatch(fetchAllResturants({payload : response }));
+            return response;
+          })
+        );
       })
     );
-  }
-  
+  } 
 }
