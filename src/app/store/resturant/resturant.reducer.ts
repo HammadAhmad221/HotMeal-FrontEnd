@@ -7,7 +7,7 @@
 // };
 
 // const _resturantReducer = createReducer(
-  
+
 //   initialState,
 //   on(ResturantActions.fetchAllResturantsSuccess, (state, action) => ({
 //     ...state,
@@ -29,11 +29,11 @@ const initialState: ResturantState = {
 };
 
 const _resturantReducer = createReducer(
-  
+
   initialState,
-  on(ResturantActions.fetchAllResturantsSuccess, (state, action) => ({
+  on(ResturantActions.updateAllResturants, (state, action:any) => ({
     ...state,
-    allResturants: action.payload,
+    allResturants: action.payload.data,
   }))
 );
 

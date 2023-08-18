@@ -24,13 +24,6 @@ export class HomeComponent implements OnInit {
          plan: 0,
    }
 
-  //  this.store.select(getAllResturants()).subscribe((data)=>{
-  //     if(data!=null && data.length>0){
-  //       this.allRestuarants=data;
-  //     }else{
-  //       this.store.dispatch(fetchAllResturants({request:request}));
-  //     }
-  //  });
 
   this.store.select(getAllResturants).subscribe((data) => {
     if (data != null && data.length > 0) {
@@ -41,6 +34,6 @@ export class HomeComponent implements OnInit {
       this.store.dispatch(ResturantActions.fetchAllResturants({ request: request }));
     }
   });
-  
+
   }
 }
