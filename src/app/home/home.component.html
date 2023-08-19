@@ -1,12 +1,18 @@
 <div class="bg-white mx-4 min-w-screen mt-4 mb-12 min-h-screen">
-  <ng-container *ngIf="isLoading; else content">
-    <div class="flex items-center justify-center h-full">
-      Loading...
+  <ng-container *ngIf="isLoading; else page">
+    <div class="loader">
+      <div class="loader-inner">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
     </div>
   </ng-container>
 
-  <ng-template #content>
-    <!-- Your original code starts here -->
+  <ng-template #page>
+    <!-- Page starts here -->
     
   <div class="bg-white mx-4 min-w-screen mt-4 mb-12 min-h-screen">
     <section>
