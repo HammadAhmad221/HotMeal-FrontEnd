@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import * as ResturantActions from './resturant.action';
+import {  map, switchMap } from 'rxjs/operators';
 import { HttpService } from 'src/app/restaurant-api.service';
-import { IRestaurant } from 'src/app/models/resturant.model';
 import { FETCH_ALL_RESTURANTS_ACTION, UPDATE_ALL_RESTURANTS_ACTION } from '../store.constants';
 
 @Injectable()

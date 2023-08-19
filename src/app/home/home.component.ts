@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getAllResturants } from '../store/resturant/resturant.selector';
-import { fetchAllResturants } from '../store/resturant/resturant.action';
+// import { fetchAllResturants } from '../store/resturant/resturant.action';
 import { IGetResturantRequest } from '../models/request/getResturant.request';
 import * as ResturantActions from '../store/resturant/resturant.action';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,26 +15,33 @@ import * as ResturantActions from '../store/resturant/resturant.action';
 })
 export class HomeComponent implements OnInit {
   allRestuarants:any[]=[];
-  constructor(private store: Store) {}
-
+  featuredResturants: any[] = [];
+  recommendedResturants:any[]=[];
+  isLoading: boolean = false;
+  constructor(private store: Store,private router:Router) {}
+  onSelectRestaurant(id:string){
+    this.router.navigate([id])
+  }
   ngOnInit(): void {
    const request:IGetResturantRequest={
-    latitude:31.5497,
-    longitude: 74.3436,
+    latitude:31.470433767658765, 
+    longitude: 74.30743114496127,
     maxOrdersPerMonth: 0,
-         featured: true,
+         featured: false,
          plan: 0,
    }
 
+   this.isLoading = true;
 
   this.store.select(getAllResturants).subscribe((data) => {
     if (data != null && data.length > 0) {
       this.allRestuarants = data;
-      console.log('from component',this.allRestuarants);
+      this.featuredResturants = data.filter((resturant) => resturant.featured === true);
+      this.recommendedResturants=data.filter((resturant)=>resturant.rating>=4)
     } else {
-      //console.log('else part of component');
       this.store.dispatch(ResturantActions.fetchAllResturants({ request: request }));
     }
+    this.isLoading = false;
   });
 
   }

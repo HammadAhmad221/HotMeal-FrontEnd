@@ -19,3 +19,8 @@ export const getAllResturants = createSelector(
   getResturantState,
   (state) => state.allResturants
 );
+
+export const getRestaurantById = (id: string) => createSelector(
+  getResturantState,
+  (state) => state.allResturants.find((restaurant) => restaurant._id == id)
+);

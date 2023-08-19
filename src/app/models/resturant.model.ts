@@ -1,5 +1,6 @@
 export interface IRestaurant {
     // [key: string]: any
+    _id:string;
     name: string;
     rating: number;
     views: number;

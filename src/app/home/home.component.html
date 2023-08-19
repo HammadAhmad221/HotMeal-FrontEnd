@@ -1,98 +1,84 @@
-<div class="bg-white mx-4 min-w-screen  mt-4  mb-12  min-h-screen" >
-
-    <section>
-    <div class=" lg:pt-8 pt-4 mx-5 ">
-    <img src="assets/hotemwal.png" class="h-8 w-18 ">
+<div class="bg-white mx-4 min-w-screen mt-4 mb-12 min-h-screen">
+  <section>
+    <div class="lg:pt-8 pt-4 mx-5">
+      <img src="assets/hotemwal.png" class="h-8 w-18" />
     </div>
-</section>
+  </section>
 
-<section >
-    <div class="lg:flex jusstify-center  mx-5">
-        <!-- search bar start here -->
+  <section>
+    <div class="lg:flex jusstify-center mx-5">
+      <!-- search bar start here -->
 
-   <div class="lg:w-1/2  my-4 ">
-    <label for="simple-search"class="sr-only">Search</label>
-    <div class="relative w-full">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      <div class="lg:w-1/2 my-4">
+        <label for="simple-search" class="sr-only">Search</label>
+        <div class="relative w-full">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <input type="text" id="simple-search"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5"
+            placeholder="Search" required />
         </div>
-        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5" placeholder="Search" required>
-    </div>
-   </div>
-   <div class="lg:mt-8  pl-4 ">
-    <img class="assets/slider.svg" class="h-4 w-4">
-   </div>
-</div>
-</section>
-
-
-
-
-
-
-<!-- <section  >
-<div class="mx-auto  mx-5 mb-2">
-    <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins] ">Featured Resturant</p>
-</div>
-    <div   class="flex gap-2 flex-row   max-h-96 mx-5  overflow-x-scroll ">
-    <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants">
-            <img src="assets/hamburger.png"  class="rounded-lg w-full h-60">
-            <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-            <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-        </div>
-    </div>
-</section> -->
-
-<!-- <section>
-    <div class="mx-auto mx-5 mb-2">
-      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">Featured Restaurant</p>
-    </div>
-    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
-      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of restaurants">
-        <img src="https://hotmeal.s3.us-west-2.amazonaws.com/{{rest.photos[0]}}" class="rounded-lg w-60 h-60" alt="image not found">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
-        <p class="not-italic font-semibold font-[Poppins] text-gray-400">{{ rest.phoneNo}}</p>
+      </div>
+      <div class="lg:mt-8 pl-4">
+        <img class="assets/slider.svg" class="h-4 w-4" />
       </div>
     </div>
-  </section> -->
+  </section>
+
+  <!-- grid Featured Resturants start here -->
+
   <section>
     <div class="mx-auto mx-5 mb-2">
-      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">Featured Restaurant</p>
+      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
+        Featured Restaurants
+      </p>
     </div>
-    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
-      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of allRestuarants">
-        <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60" alt="Resturant Image">
+    <div  class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of featuredResturants" (click)="onSelectRestaurant(rest._id)">
+        <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
+          alt="Resturant Image" />
         <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
       </div>
     </div>
   </section>
 
 
-<section  >
-    <!-- grid start here -->
-    <div class="mx-auto  mx-5 mt-2">
-        <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins] ">Recommanded Resturant</p>
+
+  <!-- grid Recomended Resturants start here -->
+  <section>
+    <div class="mx-auto mx-5 mb-2">
+      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
+        Recommended Restaurants
+      </p>
     </div>
-        <div   class="flex gap-2 flex-row   max-h-96 mx-5  overflow-x-scroll ">
-        <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of allRestuarants">
-                <img src="assets/hamburger.png"  class="rounded-lg w-full h-60">
-                <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-                <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
-            </div>
-        </div>
-    </section>
-<!-- third grid start here -->
-
-
-<div class="mx-5  ">
-<p class="lg:pl-2 pl-10 not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]" >All Resturant</p>
-<div class="grid lg:grid-cols-5  md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mb-4 pl-0 pr-0">
-    <div class="mx-auto lg:mx-0">
-        <img src="assets/hamburger.png"  class="h-auto max-w-full rounded-lg">
-        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">Hamburger</span>
-        <p class="not-italic font-semibold  font-[Poppins] text-gray-400 ">$ 12.75</p>
+    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of recommendedResturants" (click)="onSelectRestaurant(rest._id)">
+        <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
+          alt="Resturant Image" />
+        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
+      </div>
     </div>
-</div>
-</div>
- </div>
+  </section>
 
+  <!-- third grid All Resturants start here -->
+
+  <section>
+    <div class="mx-auto mx-5 mb-2">
+      <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
+        All Restaurants
+      </p>
+    </div>
+    <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of allRestuarants" (click)="onSelectRestaurant(rest._id)">
+        <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
+          alt="Resturant Image" />
+        <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
+      </div>
+    </div>
+  </section>

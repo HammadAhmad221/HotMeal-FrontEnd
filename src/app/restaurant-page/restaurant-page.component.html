@@ -1,21 +1,28 @@
 <div class="mb-6">
 <div class="">
     <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill">
+    <!-- <slick-carousel class="carousel" [config]="slickCarouselConfig">
+        <div *ngFor="let imageUrl of resturantInfo.pictures">
+          <div class="slide">
+            <img [src]="imageUrl" alt="Restaurant Image" />
+          </div>
+        </div>
+      </slick-carousel> -->
 </div>
-<p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">Yasir Broast</p>
+<p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">{{resturantInfo.name}}</p>
 <div class="flex">
     <div class="flex gap-x-2 pl-4">
         <img src="assets/km_icon.svg" class="h-4 w-4 mt-1">
-        <span>1.5 km away</span>
+        <span>{{resturantInfo.views}}</span>
     </div>
     <div class="flex gap-x-2 pl-4">
         <img src="assets/satar_icon.svg" class="h-4 w-4 mt-1">
-        <span>2.5 (2500)</span>
+        <span>{{resturantInfo.rating}}</span>
     </div>
 </div>
 <div class="pl-4  flex lg:w-full mt-2">
     <img src="assets/vector_icon.svg" class="h-4 w-4 mt-1">
-    <p class="">123 Washington street Aptl Boston, MA,02890</p>
+    <p class="">{{resturantInfo.address}}</p>
 </div>
 <div class="flex md:justify-start justify-center mx-3">
     <div class="flex gap-x-12 md:pl-4 mt-4 ">

@@ -27,10 +27,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ResturantStoreModule } from './store/resturant/resturant.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -46,8 +47,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     StoreModule.forRoot({}), // Import your reducers here if needed
     EffectsModule.forRoot([]), // Import your effects here if needed
     AppRoutingModule,
-    // CommonModule,
-    ResturantStoreModule // Import your custom store module here
+    CommonModule,
+    ResturantStoreModule, // Import your custom store module here
+    SlickCarouselModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
