@@ -34,14 +34,19 @@ export class HomeComponent implements OnInit {
    this.isLoading = true;
 
   this.store.select(getAllResturants).subscribe((data) => {
+     this.isLoading=true;
     if (data != null && data.length > 0) {
+      // this.isLoading=true;
       this.allRestuarants = data;
       this.featuredResturants = data.filter((resturant) => resturant.featured === true);
-      this.recommendedResturants=data.filter((resturant)=>resturant.rating>=4)
+      this.recommendedResturants=data.filter((resturant)=>resturant.rating>=4);
+      // this.isLoading=false;
     } else {
+      // this.isLoading=true;
       this.store.dispatch(ResturantActions.fetchAllResturants({ request: request }));
+      // this.isLoading=false;
     }
-    this.isLoading = false;
+     this.isLoading = false;
   });
 
   }

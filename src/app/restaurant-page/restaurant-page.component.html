@@ -1,13 +1,8 @@
 <div class="mb-6">
 <div class="">
-    <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill">
-    <!-- <slick-carousel class="carousel" [config]="slickCarouselConfig">
-        <div *ngFor="let imageUrl of resturantInfo.pictures">
-          <div class="slide">
-            <img [src]="imageUrl" alt="Restaurant Image" />
-          </div>
-        </div>
-      </slick-carousel> -->
+    
+    <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + resturantInfo.photos[currentImageIndex]" alt="Restaurant Image" class="w-full h-[65vh] rounded-lg object-cover"/>
+    <!-- <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill"> -->
 </div>
 <p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">{{resturantInfo.name}}</p>
 <div class="flex">

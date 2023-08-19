@@ -31,12 +31,14 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ResturantStoreModule } from './store/resturant/resturant.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+// import {RestaurantPageComponent} from './restaurant-page/restaurant-page.component';
+// import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    // RestaurantPageComponent,
     HomeComponent,
     DashboardComponent
     // Other components and directives...
@@ -49,7 +51,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     AppRoutingModule,
     CommonModule,
     ResturantStoreModule, // Import your custom store module here
-    SlickCarouselModule,
+    // SlickCarouselModule
 
   ],
   providers: [],
