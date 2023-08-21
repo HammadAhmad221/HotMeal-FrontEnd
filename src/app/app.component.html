@@ -1,14 +1,1 @@
 <router-outlet></router-outlet>
-<p>latitude: {{latitude}}</p>
-<p>longitude: {{longitude }}</p>
-
-
-
-<div *ngIf="restaurants">
-    <h2>Restaurants:</h2>
-    <ul>
-      <li *ngFor="let restaurant of restaurants">
-        {{ restaurant.name }} ---- {{ restaurant.description }}
-      </li>
-    </ul>
-  </div>

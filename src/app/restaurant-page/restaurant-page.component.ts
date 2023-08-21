@@ -57,6 +57,7 @@ import { GeolocationService } from '../geolocation.service'; // Import the servi
 import { Subscription, interval } from 'rxjs';
 import { IGetResturantRequest } from '../models/request/getResturant.request';
 import * as ResturantActions from '../store/resturant/resturant.action';
+import { HttpService } from '../restaurant-api.service';
 
 
 @Component({
@@ -66,18 +67,21 @@ import * as ResturantActions from '../store/resturant/resturant.action';
 })
 export class RestaurantPageComponent implements OnInit, OnDestroy {
   allRestuarants:any[]=[];
-  resturantId: string | null = null;
+  resturantId: string ='';
   resturantInfo: any = [];
   currentImageIndex = 0;
   imageSubscription: Subscription | undefined;
   imageInterval = 2500;
   isLoading: boolean = true;
+  orderPlaced:boolean=false;
 
 
   constructor(
     private geolocationService: GeolocationService, // Inject the service
     private route: ActivatedRoute,
-    private store: Store
+    private store: Store,
+  public httpService:HttpService
+
   ) {}
 
   ngOnInit(): void {
@@ -98,6 +102,7 @@ export class RestaurantPageComponent implements OnInit, OnDestroy {
         this.fetchNearbyRestaurants();
       }
     });
+    
   }
 
   ngOnDestroy(): void {
@@ -120,7 +125,7 @@ export class RestaurantPageComponent implements OnInit, OnDestroy {
         this.store.select(getAllResturants).subscribe((data) => {
           if (data != null && data.length > 0) {
             this.allRestuarants = data;
-            // console.log('RESTURANT PAGE GETTING RESTURANTS',this.allRestuarants);
+             console.log('RESTURANT PAGE GETTING RESTURANTS',this.allRestuarants);
           } 
           else {
             this.store.dispatch(ResturantActions.fetchAllResturants({ request: request }));
@@ -140,6 +145,18 @@ export class RestaurantPageComponent implements OnInit, OnDestroy {
 
   nextImage(): void {
     this.currentImageIndex = (this.currentImageIndex + 1) % this.resturantInfo.photos.length;
+  }
+
+
+
+  addOrder(){
+    this.httpService.addOrder(this.resturantId||'').subscribe((responce)=>{
+        console.log('Order added successfully',responce);
+        this.orderPlaced=true;
+    },
+    (error)=>{
+      console.log('Error',error);
+    })
   }
   
 }

@@ -43,20 +43,20 @@
           <div class="flex gap-x-2 pl-4">
             <img src="assets/km_icon.svg" class="h-4 w-4 mt-1" />
             <ng-container *ngIf="resturantInfo">
-              <span>{{ resturantInfo.views }}</span>
+              <span>Views: {{ resturantInfo.views }}</span>
             </ng-container>
           </div>
           <div class="flex gap-x-2 pl-4">
             <img src="assets/satar_icon.svg" class="h-4 w-4 mt-1" />
             <ng-container *ngIf="resturantInfo">
-              <span>{{ resturantInfo.rating }}</span>
+              <span>Rating: {{ resturantInfo.rating }}</span>
             </ng-container>
           </div>
         </div>
         <div class="pl-4 flex lg:w-full mt-2">
           <img src="assets/vector_icon.svg" class="h-4 w-4 mt-1" />
           <ng-container *ngIf="resturantInfo">
-            <p class="">{{ resturantInfo.address }}</p>
+            <p class="">Address: {{ resturantInfo.address }}</p>
           </ng-container>
         </div>
         <div class="flex md:justify-start justify-center mx-3">
@@ -93,9 +93,19 @@
             </div>
           </div>
         </div>
+        <!-- <div class="mt-8 flex md:pl-8 mt-8 md:justify-start justify-center">
+          <button class="bg-black py-3 text-white px-8" (click)="addOrder()">Order Now</button>
+        </div> -->
         <div class="mt-8 flex md:pl-8 mt-8 md:justify-start justify-center">
-          <button class="bg-black py-3 text-white px-8">Order Now</button>
+          <ng-container *ngIf="!orderPlaced; else orderPlacedMessage">
+            <button class="bg-black py-3 text-white px-8" (click)="addOrder()">Order Now</button>
+          </ng-container>
         </div>
+        
+        <ng-template #orderPlacedMessage>
+          <p class="text-green-500 font-bold">{{resturantInfo.phoneNo}}</p>
+        </ng-template>
+        <!-- change button with phone number code ends here -->
         <div class="flex justify-between mx-8 mt-6">
           <p class="not-italic font-bold text-xl leading-7 text-black mb-4">Menue</p>
           <img src="assets/vector_2_icon.svg" class="w-4 text-black mb-4" />

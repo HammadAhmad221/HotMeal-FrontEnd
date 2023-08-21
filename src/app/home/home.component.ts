@@ -75,6 +75,7 @@ export class HomeComponent implements OnInit {
   onSelectRestaurant(id:string){
     this.router.navigate([id]);
   }
+  
 
   ngOnInit(): void {
     // Use the geolocation service to get the user's location
@@ -92,7 +93,7 @@ export class HomeComponent implements OnInit {
           this.isLoading = true;
           if (data != null && data.length > 0) {
             this.allRestuarants = data;
-            console.log('ALL RESTURANTS',this.allRestuarants);
+            // console.log('ALL RESTURANTS',this.allRestuarants);
             this.featuredResturants = data.filter((resturant) => resturant.featured === true);
             this.recommendedResturants = data.filter((resturant) => resturant.rating >= 4);
           } else {

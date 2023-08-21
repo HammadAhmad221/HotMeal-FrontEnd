@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { fetchAllResturants } from 'src/app/store/resturant/resturant.action'; // Import your fetchDataSuccess action
+import { Observable} from 'rxjs';
 import { IRestaurant } from './models/resturant.model';
 import { IGetResturantRequest } from './models/request/getResturant.request';
 
@@ -11,7 +8,7 @@ import { IGetResturantRequest } from './models/request/getResturant.request';
   providedIn: 'root',
 })
 export class HttpService {
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(private http: HttpClient) {}
 
     baseURL: string = 'http://35.89.117.249:3000';
 
@@ -24,5 +21,8 @@ export class HttpService {
   getResturants(request: IGetResturantRequest): Observable<IRestaurant[]> {
     const url = `${this.baseURL}/resturants/getnearbyresturants`;
     return this.http.post<IRestaurant[]>(url, request);
-}
+  }
+  addOrder(id:string){
+    return this.http.post(this.baseURL+'/order/addorder',{resturantId:id});
+  }
 }
