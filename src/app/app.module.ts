@@ -31,14 +31,14 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ResturantStoreModule } from './store/resturant/resturant.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-// import {RestaurantPageComponent} from './restaurant-page/restaurant-page.component';
+import {RestaurantPageComponent} from './restaurant-page/restaurant-page.component';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // RestaurantPageComponent,
+     RestaurantPageComponent,
     HomeComponent,
     DashboardComponent
     // Other components and directives...

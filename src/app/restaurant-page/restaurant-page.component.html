@@ -1,49 +1,131 @@
-<div class="mb-6">
-<div class="">
-    
-    <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + resturantInfo.photos[currentImageIndex]" alt="Restaurant Image" class="w-full h-[65vh] rounded-lg object-cover"/>
-    <!-- <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill"> -->
-</div>
-<p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">{{resturantInfo.name}}</p>
-<div class="flex">
-    <div class="flex gap-x-2 pl-4">
-        <img src="assets/km_icon.svg" class="h-4 w-4 mt-1">
-        <span>{{resturantInfo.views}}</span>
-    </div>
-    <div class="flex gap-x-2 pl-4">
-        <img src="assets/satar_icon.svg" class="h-4 w-4 mt-1">
-        <span>{{resturantInfo.rating}}</span>
-    </div>
-</div>
-<div class="pl-4  flex lg:w-full mt-2">
-    <img src="assets/vector_icon.svg" class="h-4 w-4 mt-1">
-    <p class="">{{resturantInfo.address}}</p>
-</div>
-<div class="flex md:justify-start justify-center mx-3">
-    <div class="flex gap-x-12 md:pl-4 mt-4 ">
-        <div class="pl-2 lg:pl-0">
-            <p class="not-italic font-bold text-sm leading-5 text-center text-green-700 font-[Poppins]">Open</p>
-            <p class="not-italic font-normal leading-4 text-center text-black">status</p>
-        </div>
-        <div>
-            <p class="not-italic font-bold text-sm leading-5 text-center text-black">RS. 199</p>
-            <p class="not-italic font-normal leading-4 text-center text-black">maximum order</p>
-        </div>
-        <div>
-            <p class="not-italic font-bold text-sm leading-5 text-center text-black">45 min</p>
-            <p class="not-italic font-normal leading-4 text-center text-black ">Delivery time</p>
-        </div>
-    </div>
-</div>
-<div class="mt-8 flex  md:pl-8 mt-8 md:justify-start justify-center">
-    <button class="bg-black py-3 text-white px-8">Order Now</button>
-</div>
-<div class="flex justify-between mx-8 mt-6">
-<p class="not-italic font-bold text-xl leading-7 text-black mb-4">Menue</p>
-<img src="assets/vector_2_icon.svg" class=" w-4 text-black mb-4">
-</div>
-<div class="mx-8">
-    <img src="assets/Rectangle (1).png" class="h-auto md:min-w-full rounded-lg object-fill">
-</div>
-</div>
 
+
+
+
+
+
+
+<div class="bg-white mx-4 min-w-screen mt-4 mb-12 min-h-screen">
+    <ng-container *ngIf="isLoading; else page">
+      <div class="loader">
+        <div class="loader-inner">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-template #page>
+      <!-- Page starts here -->
+      <div class="mb-6">
+        <div class="">
+          <ng-container *ngIf="resturantInfo">
+            <img
+              [src]="
+                'https://hotmeal.s3.us-west-2.amazonaws.com/' +
+                resturantInfo.photos[currentImageIndex]
+              "
+              alt="Restaurant Image"
+              class="w-full h-[65vh] rounded-lg object-cover"
+            />
+            <!-- <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill"> -->
+          </ng-container>
+        </div>
+        <ng-container *ngIf="resturantInfo">
+          <p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">
+            {{ resturantInfo.name }}
+          </p>
+        </ng-container>
+        <div class="flex">
+          <div class="flex gap-x-2 pl-4">
+            <img src="assets/km_icon.svg" class="h-4 w-4 mt-1" />
+            <ng-container *ngIf="resturantInfo">
+              <span>{{ resturantInfo.views }}</span>
+            </ng-container>
+          </div>
+          <div class="flex gap-x-2 pl-4">
+            <img src="assets/satar_icon.svg" class="h-4 w-4 mt-1" />
+            <ng-container *ngIf="resturantInfo">
+              <span>{{ resturantInfo.rating }}</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="pl-4 flex lg:w-full mt-2">
+          <img src="assets/vector_icon.svg" class="h-4 w-4 mt-1" />
+          <ng-container *ngIf="resturantInfo">
+            <p class="">{{ resturantInfo.address }}</p>
+          </ng-container>
+        </div>
+        <div class="flex md:justify-start justify-center mx-3">
+          <div class="flex gap-x-12 md:pl-4 mt-4">
+            <div class="pl-2 lg:pl-0">
+              <p
+                class="not-italic font-bold text-sm leading-5 text-center text-green-700 font-[Poppins]"
+              >
+                Open
+              </p>
+              <p class="not-italic font-normal leading-4 text-center text-black">
+                status
+              </p>
+            </div>
+            <div>
+              <p
+                class="not-italic font-bold text-sm leading-5 text-center text-black"
+              >
+                RS. 199
+              </p>
+              <p class="not-italic font-normal leading-4 text-center text-black">
+                maximum order
+              </p>
+            </div>
+            <div>
+              <p
+                class="not-italic font-bold text-sm leading-5 text-center text-black"
+              >
+                45 min
+              </p>
+              <p class="not-italic font-normal leading-4 text-center text-black">
+                Delivery time
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 flex md:pl-8 mt-8 md:justify-start justify-center">
+          <button class="bg-black py-3 text-white px-8">Order Now</button>
+        </div>
+        <div class="flex justify-between mx-8 mt-6">
+          <p class="not-italic font-bold text-xl leading-7 text-black mb-4">Menue</p>
+          <img src="assets/vector_2_icon.svg" class="w-4 text-black mb-4" />
+        </div>
+        <div class="mx-8">
+          <img
+            src="assets/Rectangle (1).png"
+            class="h-auto md:min-w-full rounded-lg object-fill"
+          />
+        </div>
+      </div>  
+    
+      <!-- ... -->
+    </ng-template>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

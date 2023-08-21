@@ -15,28 +15,28 @@ export class AppComponent implements OnInit {
     constructor(public httpService: HttpService) {  }
 
   ngOnInit(): void {
-    //this.getCurrentLocation();
+    // this.getCurrentLocation();
     //this.getAddress();
     //this.getResturants();//to see it on web page
   }
-  getCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
-          this.getAddress();
-          //this.getResturants();
-          console.log(this.latitude, this.longitude);
-        },
-        (error) => {
-          console.log('Error occurred while retrieving location:', error);
-        }
-      );
-    } else {
-      console.log('Geolocation is not supported by this browser.');
-    }
-  }
+  // getCurrentLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         this.latitude = position.coords.latitude;
+  //         this.longitude = position.coords.longitude;
+  //         this.getAddress();
+  //         //this.getResturants();
+  //         console.log(this.latitude, this.longitude);
+  //       },
+  //       (error) => {
+  //         console.log('Error occurred while retrieving location:', error);
+  //       }
+  //     );
+  //   } else {
+  //     console.log('Geolocation is not supported by this browser.');
+  //   }
+  // }
 
   getAddress() {
     this.httpService
@@ -44,16 +44,5 @@ export class AppComponent implements OnInit {
       .subscribe((response) => {
         console.log('response: ', response);
       });
-  }
-  // getResturants() {
-  //   this.httpService.getResturants(this.longitude||0 ,this.latitude||0).subscribe((response:any)=>{
-       
-  //       console.log('Response:', response);
-  //       console.log(this.latitude,this.longitude);
-  //       this.restaurants = response.data;  
-  //   }, error => {
-  //     console.error('Error:', error);
-  //   });
-  // }
-   
+  }   
 }
