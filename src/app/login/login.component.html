@@ -1,0 +1,22 @@
+
+<div class="flex-1 pt-2">
+    <div class="container-center" >
+   <div class="row justify-content-center mt-5">
+     <div class="col-8">
+     <h1 id="heading">Login Page</h1>
+
+       <form (ngSubmit)="login()">
+         <div class="mb-3">
+           
+           <input [(ngModel)]="email" name="username" type="email" class="form-control" id="restaurantName" placeholder="Enter Email">
+         </div>
+         <div class="mb-3">
+           <input [(ngModel)]="password" name="password" type="password" class="form-control" id="address" placeholder="Enter Password">
+         </div>
+         <div class="d-flex justify-content-center align-items-center mt-4 buttonpair">
+           <button id="Save" type="submit" class="btn btn-warning ">Login</button>
+         </div>
+         
+       </form>
+     </div>
+   </div>

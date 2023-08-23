@@ -32,6 +32,8 @@ import { HomeComponent } from './home/home.component';
 import { ResturantStoreModule } from './store/resturant/resturant.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RestaurantPageComponent} from './restaurant-page/restaurant-page.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
@@ -40,7 +42,8 @@ import {RestaurantPageComponent} from './restaurant-page/restaurant-page.compone
     AppComponent,
      RestaurantPageComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
     // Other components and directives...
   ],
   imports: [
@@ -51,6 +54,7 @@ import {RestaurantPageComponent} from './restaurant-page/restaurant-page.compone
     AppRoutingModule,
     CommonModule,
     ResturantStoreModule, // Import your custom store module here
+    FormsModule
     // SlickCarouselModule
 
   ],

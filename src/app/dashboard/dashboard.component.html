@@ -9,20 +9,28 @@
       <li class="px-6 py-4">
         <img src="assets/HotMeal..svg" class="">
       </li>
-      <li class="px-6 py-2  flex gap-x-2 bg-yellow-500 inline-block my-2 mt-8 cursor-pointer"
-        (click)="setActiveButton('button1')" [ngClass]="{'active': activeButton === 'button1'}">
+       
+      <li class="px-6 py-2  flex gap-x-2 bg-yellow-500 inline-block my-2 mt-8 cursor-pointer" (click)="setActiveButton('button1')"> 
+         <!-- [ngClass]="{'active': activeButton === 'button1'}" -->
         <img src="assets/Restaurant Location_icon.svg" class="">
         <a class="text-white hover:text-white mt-2">Dashboard</a>
       </li>
-      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button2')"
-        [ngClass]="{'active': activeButton === 'button2'}">
+      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button2')">
+        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
         <img src="assets/Review_icon.svg" class="">
         <a class="text-gray-300 hover:text-white mt-2">Restaurants</a>
       </li>
-      <li class="px-6 py-2  flex gap-x-2 inline-block my-2">
-        <img src="assets/Delivery Scooter_icon.svg" class="">
-        <a href="#" class="text-gary-300 hover:text-white mt-2">Food Order</a>
+      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button3')">
+        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
+        <img src="assets/Review_icon.svg" class="">
+        <a class="text-gray-300 hover:text-white mt-2">Add Restaurant</a>
       </li>
+      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button4')">
+        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
+        <img src="assets/Review_icon.svg" class="">
+        <a class="text-gray-300 hover:text-white mt-2">Restaurant Orders</a>
+      </li>
+  
     </ul>
   </aside>
   <!-- sidebar end here -->
@@ -35,7 +43,7 @@
     <div class="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-4 mb-4 h-48">
       <div class=" border-1 border-blue-700 bg-yellow-500 border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">All Restaurants</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">120</p>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{allRestuarants.length}}</p>
       </div>
       <div class=" border-1 border-blue-700 bg-white border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">Highes orders</span>
@@ -65,9 +73,9 @@
     <div class="lg:mx-8 mx-2">
       <div class="flex justify-between mt-8 lg:w-full ">
         <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">All
-          Restaurants</span>
-        <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">Add
-          Restaurants</span>
+           Restaurants</span>
+        <!-- <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">Add
+          Restaurants</span> -->
       </div>
       <div class="flex gap-x-4 my-4">
         
@@ -123,45 +131,104 @@
 
             </div>
           </div>
-          <div class="flex flex-row w-full  text-center justify-between border-b-2 ">
-            <div class="lg:p-4 w-1/4   ">
-              <span class="text-center ">Al-Fazal</span>
-            </div>
-            <div class="lg:p-4 p-2  w-1/4  ">
-              <span class="text-center">Phase A, Pak Arba Lahore</span>
-            </div>
-            <div class="lg:p-4 p-2 w-1/4 ">
-              <span
-                class="not-italic font-[inter] font-normal text-base leading-6 text-center text-teal-600 pl-8 ">0304-3168853</span>
-            </div>
-            <div class="lg:p-4 p-2 w-1/4 "><span
-                class="not-italic font-normal text-base leading-6  text-center text-gray-900 pl-14 ">yes</span></div>
-            <div class="lg:p-4 p-2  ">
-
-            </div>
-          </div>
-          <div class="flex flex-row w-full  text-center justify-between border-b-2 ">
-            <div class="lg:p-4 w-1/4   ">
-              <span class="text-center ">Al-Fazal</span>
-            </div>
-            <div class="lg:p-4 p-2  w-1/4  ">
-              <span class="text-center">Phase A, Pak Arba Lahore</span>
-            </div>
-            <div class="lg:p-4 p-2 w-1/4 ">
-              <span
-                class="not-italic font-[inter] font-normal text-base leading-6 text-center text-teal-600 pl-8 ">0304-3168853</span>
-            </div>
-            <div class="lg:p-4 p-2 w-1/4 "><span
-                class="not-italic font-normal text-base leading-6  text-center text-gray-900 pl-14 ">yes</span></div>
-            <div class="lg:p-4 p-2  ">
-
-            </div>
-          </div>
-          <!-- Add more rows as needed -->
         </div>
       </div>
     </div>
   </div>
   <!--resturant page ennd here -->
+  <!-- Add resturant start here -->
+  <div class="flex-1 pt-2" *ngIf="activeButton === 'button3'">
+     <div class="container-center" >
+    <div class="row justify-content-center mt-5">
+      <div class="col-8">
+      <h1 id="heading">Add Resturant Details</h1>
+
+        <form>
+          <div class="mb-3">
+            
+            <input type="text" class="form-control" id="restaurantName" placeholder="Enter restaurant name">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="address" placeholder="Enter address">
+          </div>
+          <div class="mb-3">
+            <input type="tel" class="form-control" id="contactNumber" placeholder="Enter contact number">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="featured" placeholder="Enter yes or no">
+            
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="openingHours" placeholder="Enter opening hours">
+          </div>
+          <div class="d-flex justify-content-center align-items-center mt-4 buttonpair">
+            <button id="Cancel" type="reset" class="btn btn-light ">Cancel</button>
+            <button id="Save" type="submit" class="btn btn-warning ">Save</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+   </div>
+  </div>
+  <!-- Resturants orders -->
+
+    <div class="flex-1" *ngIf="activeButton === 'button4'">
+      <div class="lg:mx-8 mx-2">
+        <div class="flex justify-between mt-8 lg:w-full ">
+          <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">All
+             Orders</span>
+          <!-- <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">Add
+            Restaurants</span> -->
+        </div>
+        <div class="flex gap-x-4 my-4">
+          
+          <p class="not-italic font-normal text-sm leading-5 text-black font-[Poppins]">Clear All</p>
+        </div>
+        <div class="flex gap-x-4 my-4">
+          <div class="flex gap-x-2">
+            <img src="assets/checkbox_icon.svg" class="h-4 w-4" alt="img">
+            <p class="not-italic font-normal text-sm leading-5 text-black font-[Poppins]">All Restaurants</p>
+          </div>
+          <div class="flex gap-x-2">
+            <img src="assets/checkbox_icon.svg" class="h-4 w-4" alt="img">
+            <p class="not-italic font-normal text-sm leading-5 text-black font-[Poppins]">All Restaurants</p>
+          </div>
+          <div class="flex gap-x-2">
+            <img src="assets/checkbox_icon.svg" class="h-4 w-4" alt="img">
+            <p class="not-italic font-normal text-sm leading-5 text-black font-[Poppins]">All Restaurants</p>
+          </div>
+        </div>
+        <div class="bg-white  rounded-md">
+          <div class=" flex flex-col">
+            <!-- Table headers -->
+<!-- Table headers -->
+<div class="flex w-full justify-between bg-yellow-500">
+  <div class="lg:p-4 w-1/2 p-2 text-center w-full not-italic font-normal lg:text-xl leading-5 text-gray-600">
+    Restaurant id
+  </div>
+  <div class="lg:p-4 w-1/2 p-2 text-center w-full not-italic font-normal lg:text-xl leading-5 text-gray-600">
+    Order Time
+  </div>
+</div>
+
+<!-- Table rows -->
+<div class="flex flex-row w-full text-center justify-between border-b-2">
+  <div class="lg:p-4 w-1/2">
+    <span class="text-center">64d5d1c679190461d0927558</span>
+  </div>
+  <div class="lg:p-4 p-2 w-1/2">
+    <span class="text-center">2023-08-23T08:31:18.202Z</span>
+  </div>
+</div>
+            <!-- Add more rows as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- resturants orders end -->
 </div>
 <!-- new -->
+<!-- Add order page starts here -->
+   
+<!-- Add resturant ends here -->
