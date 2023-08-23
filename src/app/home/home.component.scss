@@ -2,6 +2,85 @@ rest-item{
     height: 100px;
     width: 100px;
 }
+// .restaurant-grid {
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr); /* Show 6 columns in a row */
+//   grid-gap: 2px; /* Add gap between grid items */
+//   overflow-x: auto; /* Enable horizontal scroll */
+//   white-space: nowrap; /* Keep content in a single line */
+// }
+
+// .restaurant-card {
+//   display: inline-block;
+//   width: 150px; /* Adjust width as needed */
+//   text-align: center;
+//   padding: 10px;
+// }
+.restaurant-grid {
+  display: flex;
+  flex-wrap: wrap; /* Wrap items to new lines */
+  justify-content: flex-start; /* Align items to the start of the container */
+  align-items: flex-start; /* Align items to the start of the container */
+  gap: 10px; /* Add gap between grid items */
+  max-width: 100%; /* Ensure the grid doesn't exceed container width */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-y: hidden;
+}
+.section{
+  margin-bottom: 2rem;
+  margin-top: 1.25rem;
+}
+.heading{
+  margin-left: 1.25rem;
+  margin-bottom: .5rem;
+}
+
+.restaurant-card {
+  flex: 0 0 calc(16.666% - 10px); /* 6 cards in a row with gap */
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+}
+// .image-container {
+//   position: relative;
+//   overflow: hidden;
+//   padding-bottom: 1px; /* Maintain 1:1 aspect ratio */
+// }
+
+// .image-container img {
+//   position: relative;
+//   top: 0;
+//   left: 0;
+//   // border-radius: 5px;
+//   width: 15rem;
+//   height: 15rem;
+//   object-fit: contain; /* Maintain aspect ratio and fit within container */
+// }
+/* For screens larger than or equal to 1200px (large desktop) */
+@media screen and (min-width: 1200px) {
+  .restaurant-card {
+    flex: 0 0 calc(16.666% - 10px); /* 6 cards in a row with gap */
+  }
+}
+
+/* For screens between 768px and 1199px (tablet size) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .restaurant-card {
+    flex: 0 0 calc(33.333% - 10px); /* 3 cards in a row with gap */
+  }
+}
+
+/* For screens smaller than 768px (phone size) */
+@media screen and (max-width: 767px) {
+  .restaurant-card {
+    flex: 0 0 100%; /* 1 card in a row, taking full width */
+  }
+}
+
+
+
+/* Adjust the value of 150px as needed */
+
 .loader {
     position: fixed;
     top: 0;

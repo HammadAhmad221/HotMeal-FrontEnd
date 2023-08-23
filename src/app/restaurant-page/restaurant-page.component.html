@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <div class="bg-white mx-4 min-w-screen mt-4 mb-12 min-h-screen">
     <ng-container *ngIf="isLoading; else page">
       <div class="loader">
@@ -34,33 +27,33 @@
             <!-- <img src="assets/amlate.png"  class="h-auto md:min-w-full rounded-lg object-fill"> -->
           </ng-container>
         </div>
-        <ng-container *ngIf="resturantInfo">
-          <p class="not-italic font-semibold text-2xl leading-9 text-black ml-4">
+        <ng-container class="container" *ngIf="resturantInfo">
+          <p class="not-italic font-semibold text-2xl leading-9 text-black ml-4 mb-4">
             {{ resturantInfo.name }}
           </p>
         </ng-container>
         <div class="flex">
-          <div class="flex gap-x-2 pl-4">
+          <div class="flex pl-1">
             <img src="assets/km_icon.svg" class="h-4 w-4 mt-1" />
             <ng-container *ngIf="resturantInfo">
               <span>Views: {{ resturantInfo.views }}</span>
             </ng-container>
           </div>
-          <div class="flex gap-x-2 pl-4">
+          <div class="flex gap-x-2 pl-1">
             <img src="assets/satar_icon.svg" class="h-4 w-4 mt-1" />
             <ng-container *ngIf="resturantInfo">
               <span>Rating: {{ resturantInfo.rating }}</span>
             </ng-container>
           </div>
         </div>
-        <div class="pl-4 flex lg:w-full mt-2">
+        <div class="pl-1 flex lg:w-full mt-4">
           <img src="assets/vector_icon.svg" class="h-4 w-4 mt-1" />
           <ng-container *ngIf="resturantInfo">
-            <p class="">Address: {{ resturantInfo.address }}</p>
+            <span class="">Address: {{ resturantInfo.address }}</span>
           </ng-container>
         </div>
         <div class="flex md:justify-start justify-center mx-3">
-          <div class="flex gap-x-12 md:pl-4 mt-4">
+          <div class="flex gap-x-12 md:pl-1 mt-4">
             <div class="pl-2 lg:pl-0">
               <p
                 class="not-italic font-bold text-sm leading-5 text-center text-green-700 font-[Poppins]"
@@ -96,7 +89,7 @@
         <!-- <div class="mt-8 flex md:pl-8 mt-8 md:justify-start justify-center">
           <button class="bg-black py-3 text-white px-8" (click)="addOrder()">Order Now</button>
         </div> -->
-        <div class="mt-8 flex md:pl-8 mt-8 md:justify-start justify-center">
+        <div class="mt-8 flex md:pl-3 mt-8 md:justify-start justify-center">
           <ng-container *ngIf="!orderPlaced; else orderPlacedMessage">
             <button class="bg-black py-3 text-white px-8" (click)="addOrder()">Order Now</button>
           </ng-container>

@@ -12,7 +12,6 @@ import { GeolocationService } from '../geolocation.service';
 })
 export class DashboardComponent {
   allRestuarants:any[]=[];
-  totalResturants:number=0;
 
 
   constructor(
@@ -23,8 +22,6 @@ export class DashboardComponent {
     // this.toggleCondition()
     // console.log('Dashboard Page');
     this.fetchNearbyRestaurants();
-    this.totalResturants=this.allRestuarants.length;
-    console.log('Total Resturants:',this.totalResturants);
   }
   focusedItem: string | undefined;
   setFocus(item: string): void {

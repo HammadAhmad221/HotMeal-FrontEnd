@@ -49,8 +49,8 @@
   
     <!-- grid Featured Resturants start here -->
   
-    <section>
-      <div class="mx-auto mx-5 mb-2">
+    <section class="section">
+      <div class="mx-auto mx-5 mb-2 heading">
         <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
           Featured Restaurants
         </p>
@@ -65,8 +65,8 @@
     </section>
   
     <!-- grid Recomended Resturants start here -->
-    <section>
-      <div class="mx-auto mx-5 mb-2">
+    <section class="section">
+      <div class="mx-auto mx-5 mb-2 heading">
         <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
           Recommended Restaurants
         </p>
@@ -82,20 +82,36 @@
   
     <!-- third grid All Resturants start here -->
   
-    <section>
+    <!-- <section>
       <div class="mx-auto mx-5 mb-2">
         <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
           All Restaurants
         </p>
       </div>
-      <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="flex gap-2 flex-column max-h-96 mx-5 overflow-x-scroll max-h-screen">
         <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of allRestuarants" (click)="onSelectRestaurant(rest._id)">
           <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
             alt="Resturant Image" />
           <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
         </div>
       </div>
-    </section>
+    </section> -->
+    <!-- Third section with scrolling behavior -->
+<section class="section">
+  <div class="mx-auto mx-5 mb-2 heading">
+    <p class="not-italic font-semibold lg:text-2xl text-xl leading-9 text-black font-[Poppins]">
+      All Restaurants
+    </p>
+  </div>
+  <div class="flex gap-2 flex-column restaurant-grid ">
+    <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover restaurant-card image-container" *ngFor="let rest of allRestuarants" (click)="onSelectRestaurant(rest._id)">
+      <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
+        alt="Resturant Image" />
+      <span class="not-italic font-semibold text-sm leading-4 text-black font-[Poppins] mt-4">{{ rest.name }}</span>
+    </div>
+  </div>
+</section>
+
     </div>
     <!-- ... -->
   </ng-template>
