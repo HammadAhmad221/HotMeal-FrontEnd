@@ -4,15 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = false;
+  LOGIN="login";
+
 
   constructor() {}
 
   setAuthenticated(value: boolean) {
-    this.isAuthenticated = value;
+    if(value)
+    {
+    localStorage.setItem(this.LOGIN,"true");
+    }else{
+      localStorage.setItem(this.LOGIN,"false");
+    }
+
   }
 
   isAuthenticatedUser(): boolean {
-    return this.isAuthenticated;
+    return localStorage.getItem(this.LOGIN)==="true"?true:false;
   }
 }
