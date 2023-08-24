@@ -1,34 +1,30 @@
 <div class="flex h-screen ">
-  <!-- header stat here -->
-  
-  <!-- header end here -->
   <!-- Sidebar start here -->
-  <aside class=" bg-wihite shadow-lg text-gray-300 w-64 flex-shrink-0">
-    <!-- Sidebar content goes here -->
+  <aside class=" text-black w-64 flex-shrink-0">
     <ul class="py-4 mx-8">
       <li class="px-6 py-4">
         <img src="assets/HotMeal..svg" class="">
       </li>
        
-      <li class="px-6 py-2  flex gap-x-2 bg-yellow-500 inline-block my-2 mt-8 cursor-pointer" (click)="setActiveButton('button1')"> 
-         <!-- [ngClass]="{'active': activeButton === 'button1'}" -->
+      <li class="px-6 py-2  flex gap-x-2 bg-yellow-500 inline-block my-2 mt-8 cursor-pointer" (click)="setActiveButton('button1')"
+      [ngClass]="{'bg-yellow-500': activeButton === 'button1'}"> 
         <img src="assets/Restaurant Location_icon.svg" class="">
-        <a class="text-white hover:text-white mt-2">Dashboard</a>
+        <a class="text-black font-bold mt-2">Dashboard</a>
       </li>
-      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button2')">
-        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
+      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button2')"
+      [ngClass]="{'bg-yellow-500': activeButton === 'button2'}">
         <img src="assets/Review_icon.svg" class="">
-        <a class="text-gray-300 hover:text-white mt-2">Restaurants</a>
+        <a class="text-black font-bold mt-2">Restaurants</a>
       </li>
-      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button3')">
-        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
+      <!-- <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button3')"
+      [ngClass]="{'bg-yellow-500': activeButton === 'button3'}">
         <img src="assets/Review_icon.svg" class="">
-        <a class="text-gray-300 hover:text-white mt-2">Add Restaurant</a>
-      </li>
-      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button4')">
-        <!-- [ngClass]="{'active': activeButton === 'button2'}" -->
+        <a class="text-black font-bold mt-2">Add Restaurant</a>
+      </li> -->
+      <li class="px-6 py-2  flex gap-x-2  inline-block my-2 cursor-pointer" (click)="setActiveButton('button4')"
+      [ngClass]="{'bg-yellow-500': activeButton === 'button4'}">
         <img src="assets/Review_icon.svg" class="">
-        <a class="text-gray-300 hover:text-white mt-2">Restaurant Orders</a>
+        <a class="text-black font-bold  mt-2">Restaurant Orders</a>
       </li>
   
     </ul>
@@ -40,10 +36,10 @@
     <!-- header end here -->
   <!-- dashboard start here -->
   <div class="flex-1 pt-2" *ngIf="activeButton === 'button1'">
-    <div class="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-4 mb-4 h-48">
+    <div class="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-4 mb-4 h-48" id="dashboard">
       <div class=" border-1 border-blue-700 bg-yellow-500 border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">All Restaurants</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{allRestuarants.length}}</p>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">120</p>
       </div>
       <div class=" border-1 border-blue-700 bg-white border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">Highes orders</span>
@@ -74,8 +70,8 @@
       <div class="flex justify-between mt-8 lg:w-full ">
         <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">All
            Restaurants</span>
-        <!-- <span class="font-[Poppins]  text-xl leading-6 not-italic font-bold md:text-3xl text-gray-900 ">Add
-          Restaurants</span> -->
+           <button class="bg-yellow-500 py-3 text-black px-8" id="AddResturantButton" (click)="setActiveButton('button3')" >Add Restaurant</button>
+ 
       </div>
       <div class="flex gap-x-4 my-4">
         
@@ -143,23 +139,38 @@
       <div class="col-8">
       <h1 id="heading">Add Resturant Details</h1>
 
-        <form>
+        <form action="your-server-endpoint" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             
-            <input type="text" class="form-control" id="restaurantName" placeholder="Enter restaurant name">
+            <input type="text" class="form-control" placeholder="Enter Restaurant Name">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="address" placeholder="Enter address">
+            <input type="text" class="form-control"  placeholder="Address">
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" id="contactNumber" placeholder="Enter contact number">
+            <input type="number" class="form-control"  placeholder="Contact Number">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="featured" placeholder="Enter yes or no">
+            <input type="text" class="form-control"  placeholder="Featured Restaurant">
             
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="openingHours" placeholder="Enter opening hours">
+            <input type="text" class="form-control"  placeholder="Opening Hours">
+            
+          </div>
+          <div class="mb-3">
+            <input type="number" class="form-control"  placeholder="Latitude">
+          </div>
+          <div class="mb-3">
+            <input type="number" class="form-control"  placeholder="Longitude">
+            
+          </div>
+          <div class="mb-3">
+            <input type="image" alt="Upload Featured Image" name="imageInput" class="form-control" >
+            
+          </div>
+          <div class="mb-3">
+            <input type="image" alt="Upload Menu Image" name="imageInput" class="form-control" >
           </div>
           <div class="d-flex justify-content-center align-items-center mt-4 buttonpair">
             <button id="Cancel" type="reset" class="btn btn-light ">Cancel</button>

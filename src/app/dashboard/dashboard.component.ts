@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { IGetResturantRequest } from '../models/request/getResturant.request';
-import * as ResturantActions from '../store/resturant/resturant.action';
 import { Store } from '@ngrx/store';
-import { getAllResturants, getRestaurantById } from '../store/resturant/resturant.selector';
 import { GeolocationService } from '../geolocation.service'; 
 
 @Component({
@@ -11,58 +8,20 @@ import { GeolocationService } from '../geolocation.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  allRestuarants:any[]=[];
+activeLink: string = '';
 
 
-  constructor(
-    private geolocationService: GeolocationService, // Inject the service
-    private store: Store
-  ) {}
+
+  constructor() {}
   ngOnInit(): void {
-    // this.toggleCondition()
     // console.log('Dashboard Page');
-    this.fetchNearbyRestaurants();
   }
   focusedItem: string | undefined;
   setFocus(item: string): void {
     this.focusedItem = item;
   }
-
-  fetchNearbyRestaurants(): void {
-    this.geolocationService.getCurrentLocation()
-      .then(location => {
-        const request: IGetResturantRequest = {
-          latitude: location.latitude,
-          longitude: location.longitude,
-          maxOrdersPerMonth: 0,
-          featured: false,
-          plan: 0,
-        };
-        // console.log(request);
-        this.store.select(getAllResturants).subscribe((data) => {
-          if (data != null && data.length > 0) {
-            this.allRestuarants = data;
-             console.log('Dashboard PAGE GETTING RESTURANTS',this.allRestuarants);
-          } 
-          else {
-            this.store.dispatch(ResturantActions.fetchAllResturants({ request: request }));
-          }
-      })
-      }) 
-      .catch(error => {
-        console.log(error);
-      }); 
-  }
-
   activeButton: string = 'button1';
 
-  // setActiveButton(button: string): void {
-  //   if (button === 'button1') {
-  //     this.activeButton = this.activeButton === 'button1' ? 'button2' : 'button1';
-  //   } else if (button === 'button2') {
-  //     this.activeButton = this.activeButton === 'button2' ? 'button1' : 'button2';
-  //   }
-  // }
   setActiveButton(button: string): void {
     if (button === 'button1') {
       this.activeButton = 'button1';
@@ -70,11 +29,15 @@ export class DashboardComponent {
       this.activeButton = 'button2';
     } else if (button === 'button3') {
       this.activeButton = 'button3';
-      // console.log(this.activeButton);
     }else if(button==='button4'){
       this.activeButton='button4';
     }
   }
+
+  setActiveLink(buttonName: string): void {
+    this.activeButton = buttonName;
+  }
+  
   
   showValue: boolean | undefined;
   }

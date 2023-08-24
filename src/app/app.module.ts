@@ -43,7 +43,7 @@ import { FormsModule } from '@angular/forms';
      RestaurantPageComponent,
     HomeComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
     // Other components and directives...
   ],
   imports: [

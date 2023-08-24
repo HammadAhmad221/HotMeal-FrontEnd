@@ -3,6 +3,25 @@
     place-items: center; /* Center both horizontally and vertically */
     min-height: 100vh; /* Set a minimum height to cover the viewport */
   }
+  aside{
+    border: 3px solid gray;
+  }
+  form input{
+    padding-left: 15px;
+  }
+  #AddResturantButton{
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  aside ul li{
+    border-radius: 10px;
+  }
+  #dashboard{
+    // margin-top: 8rems;
+    margin-top: 11vh;
+    padding-left: 5vh;
+    padding-right: 2vh;
+  }
   .form-control{
     width: 597px;
 height: 48px;
@@ -19,7 +38,9 @@ font-size: 28px;
 font-weight: 700;
 line-height: 42px;
 letter-spacing: 0em;
-text-align: left;
+text-align: right;
+margin-left: 4em;
+margin-bottom: revert;
 }
 .buttonpair{
 //     width: Hug (220px);

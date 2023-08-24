@@ -150,9 +150,9 @@ export class RestaurantPageComponent implements OnInit, OnDestroy {
 
 
   addOrder(){
+    this.orderPlaced=true;
     this.httpService.addOrder(this.resturantId||'').subscribe((responce)=>{
         console.log('Order added successfully',responce);
-        this.orderPlaced=true;
     },
     (error)=>{
       console.log('Error',error);
