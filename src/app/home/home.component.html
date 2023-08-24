@@ -55,7 +55,7 @@
           Featured Restaurants
         </p>
       </div>
-      <div  class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div  class="flex gap-6 flex-row max-h-96 mx-5 overflow-x-scroll">
         <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of featuredResturants" (click)="onSelectRestaurant(rest._id)">
           <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
             alt="Resturant Image" />
@@ -71,7 +71,7 @@
           Recommended Restaurants
         </p>
       </div>
-      <div class="flex gap-2 flex-row max-h-96 mx-5 overflow-x-scroll">
+      <div class="flex gap-6 flex-row max-h-96 mx-5 overflow-x-scroll">
         <div class="w-70 h-72 flex-shrink-0 flex-grow-0 object-cover" *ngFor="let rest of recommendedResturants" (click)="onSelectRestaurant(rest._id)">
           <img [src]="'https://hotmeal.s3.us-west-2.amazonaws.com/' + rest.photos[0]" class="rounded-lg w-60 h-60"
             alt="Resturant Image" />

@@ -1,10 +1,31 @@
+.info{
+  font-size: larger;
+}
+.address{
+  font-size: x-large;
+}
+#targetIcon{
+  font-size: 30px;
+}
 /* Flex container for image and related information */
 .flex-container {
   display: flex;
   align-items: flex-start; /* Align items to the top */
   gap: 0.5rem; /* Adjust the gap between elements as needed */
 }
-
+.status{
+font-size: x-large;
+margin-left: 3rem;
+}
+button{
+border-radius: 1rem;
+font-size: 1.5rem;
+margin-left: 9rem;
+}
+.phoneNo{
+  font-size: 2rem;
+  margin-left: 10rem;
+}
 /* Style for icons */
 .flex-container img {
   width: 16px; /* Adjust icon size as needed */
