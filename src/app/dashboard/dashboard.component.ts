@@ -1,20 +1,20 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { GeolocationService } from '../geolocation.service'; 
+// import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
-activeLink: string = '';
+export class DashboardComponent implements OnInit {
 
-
+  @ViewChildren('fileInput') fileInputs!: QueryList<ElementRef>;
 
   constructor() {}
   ngOnInit(): void {
     // console.log('Dashboard Page');
+
+
   }
   focusedItem: string | undefined;
   setFocus(item: string): void {
@@ -32,10 +32,6 @@ activeLink: string = '';
     }else if(button==='button4'){
       this.activeButton='button4';
     }
-  }
-
-  setActiveLink(buttonName: string): void {
-    this.activeButton = buttonName;
   }
   
   

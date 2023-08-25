@@ -21,10 +21,13 @@ rest-item{
   flex-wrap: wrap; /* Wrap items to new lines */
   justify-content: flex-start; /* Align items to the start of the container */
   align-items: flex-start; /* Align items to the start of the container */
-  gap: 10px; /* Add gap between grid items */
+  gap: 20px; /* Add gap between grid items */
   max-width: 100%; /* Ensure the grid doesn't exceed container width */
   overflow-x: hidden; /* Hide horizontal overflow */
   overflow-y: hidden;
+}
+section span{
+  margin-top: 20px;
 }
 .section{
   margin-bottom: 2rem;
