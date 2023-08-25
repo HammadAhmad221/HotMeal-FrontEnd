@@ -51,6 +51,19 @@
     padding-left: 10px;
     color: gray;
   }
+  /* Increase the size of the checkbox */
+.checkbox .form-check-input {
+  transform: scale(1.5); /* You can adjust the scale value to make it larger or smaller */
+}
+
+/* Increase the font size of the label */
+.checkbox .label {
+  font-size: 1.2rem; /* Adjust the font size as needed */
+}
+.label{
+  margin-left: 5px;
+}
+
   .form-check-input{
     margin-top: 10px;
   }
