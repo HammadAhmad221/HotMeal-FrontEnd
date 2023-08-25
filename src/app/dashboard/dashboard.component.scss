@@ -29,6 +29,7 @@
   }
   aside{
     border: 3px solid gray;
+    border-bottom: #d9dbe5;
   }
   form input{
     padding-left: 15px;
@@ -45,6 +46,13 @@
   }
   aside ul li a{
     color:gray;
+  }
+  .checkbox{
+    padding-left: 10px;
+    color: gray;
+  }
+  .form-check-input{
+    margin-top: 10px;
   }
   #dashboard{
     // margin-top: 8rems;
