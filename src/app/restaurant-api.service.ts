@@ -25,4 +25,14 @@ export class HttpService {
   addOrder(id:string){
     return this.http.post(this.baseURL+'/order/addorder',{resturantId:id});
   }
+  dashboardData(){
+    return this.http.get(this.baseURL+"/resturants/stats");
+  }
+  getAllResturants(page:number){
+    return this.http.get(this.baseURL+`/resturants/allResturants?page=${page}`);
+  }
+  getAllOrders(page:number){
+    return this.http.get(this.baseURL+`/order/allOrders?page=${page}`);
+  }
+
 }

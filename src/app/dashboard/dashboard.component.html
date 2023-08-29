@@ -26,7 +26,7 @@
       [ngClass]="{'bg-yellow-500': activeButton === 'button4'}">
         <img src="assets/Review_icon.svg" class="">
         <a class=" font-bold  mt-2" 
-        [class.text-black]="activeButton === 'button4'">Restaurant Orders</a>
+        [class.text-black]="activeButton === 'button4'">Food Orders</a>
       </li>
   
     </ul>
@@ -41,27 +41,31 @@
     <div class="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-4 mb-4 h-48" id="dashboard">
       <div class=" border-1 border-blue-700 bg-yellow-500 border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">All Restaurants</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">120</p>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{dashboardData?.data.totalRestaurantCount}}</p>
       </div>
       <div class=" border-1 border-blue-700 bg-white border border-gray-200  shadow text-center pt-3 ">
-        <span class="not-italic font-bold md:text-2xl text-black">Highes orders</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">20</p>
+        <span class="not-italic font-bold md:text-2xl text-black">Highest Orders</span>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{dashboardData?.data.restaurantWithHighestOrders
+        }}</p>
       </div>
       <div class=" border-1 border-blue-700  bg-white border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">Limit Reached</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">4</p>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{dashboardData?.data.restaurantsReachedOrdersLimit
+        }}</p>
       </div>
       <div class=" border-1 border-blue-700 bg-yellow-500 border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">All Orders</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">120</p>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{dashboardData?.data.totalOrderCount
+        }}</p>
       </div>
       <div class=" border-1 border-blue-700  bg-white border border-gray-200  shadow text-center pt-3 ">
-        <span class="not-italic font-bold md:text-2xl text-black">Today's orders</span>
-        <p class="py-2 not-italic font-bold md:text-2xl text-black">20</p>
+        <span class="not-italic font-bold md:text-2xl text-black">Today's Orders</span>
+        <p class="py-2 not-italic font-bold md:text-2xl text-black">{{dashboardData?.data.todaysOrderCount
+        }}</p>
       </div>
       <div class=" border-1 border-blue-700  bg-white border border-gray-200  shadow text-center pt-3 ">
         <span class="not-italic font-bold md:text-2xl text-black">Prime Order Spot</span>
-        <p class="py-2 not-italic font-bold  text-black">Pak Arba</p>
+        <p class="py-2 not-italic font-bold  text-black">{{dashboardData?.data.areaWithMostOrders}}</p>
       </div>
     </div>
   </div>
@@ -112,25 +116,29 @@
 
           </div>
           <!-- Table rows -->
-          <div class="flex flex-row w-full  text-center justify-between border-b-2 ">
+          <div *ngFor="let rest of paginatedResturantData.data" class="flex flex-row w-full  text-center justify-between border-b-2 ">
             <div class="lg:p-4 w-1/4   ">
-              <span class="text-center ">Al-Fazal</span>
+              <span class="text-center ">{{rest.name}}</span>
             </div>
             <div class="lg:p-4 p-2  w-1/4  ">
-              <span class="text-center">Phase A, Pak Arba Lahore</span>
+              <span class="text-center">{{rest.address}}</span>
             </div>
             <div class="lg:p-4 p-2 w-1/4 ">
               <span
-                class="not-italic font-[inter] font-normal text-base leading-6 text-center text-teal-600 pl-8 ">0304-3168853</span>
+                class="not-italic font-[inter] font-normal text-base leading-6 text-center text-teal-600 pl-8 ">{{rest.phoneNo}}</span>
             </div>
             <div class="lg:p-4 p-2 w-1/4 "><span
-                class="not-italic font-normal text-base leading-6  text-center text-gray-900 pl-14 ">yes</span></div>
+                class="not-italic font-normal text-base leading-6  text-center text-gray-900 pl-14 ">{{rest.featured}}</span></div>
             <div class="lg:p-4 p-2  ">
 
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="flex justify-end mt-4 mr-7 mb-4 pb-4">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1" class="Cancel">Prev..</button>
+      <button (click)="goToPage(currentPage + 1)" class="Save" >Next</button>
     </div>
   </div>
   <!--resturant page ennd here -->
@@ -186,8 +194,8 @@
             </div>
             
           <div class="d-flex justify-content-center align-items-center mt-4 buttonpair">
-            <button id="Cancel" type="reset" class="btn btn-light ">Cancel</button>
-            <button id="Save" type="submit" class="btn btn-warning ">Save</button>
+            <button type="reset" class="btn btn-light Cancel">Cancel</button>
+            <button type="submit" class="btn btn-warning Save">Save</button>
           </div>
           
         </form>
@@ -229,7 +237,7 @@
 <!-- Table headers -->
 <div class="flex w-full justify-between bg-yellow-500">
   <div class="lg:p-4 w-1/2 p-2 text-center w-full not-italic font-normal lg:text-xl leading-5 text-gray-600">
-    Restaurant id
+    Restaurant Name
   </div>
   <div class="lg:p-4 w-1/2 p-2 text-center w-full not-italic font-normal lg:text-xl leading-5 text-gray-600">
     Order Time
@@ -237,17 +245,25 @@
 </div>
 
 <!-- Table rows -->
-<div class="flex flex-row w-full text-center justify-between border-b-2">
+<div *ngFor="let order of paginatedOrderData.data" class="flex flex-row w-full text-center justify-between border-b-2">
   <div class="lg:p-4 w-1/2">
-    <span class="text-center">64d5d1c679190461d0927558</span>
+    <!-- <span class="text-center">{{order.resturantId?.name}}</span> -->
+    <ng-container *ngIf="order.resturantId?.name; else placeholder">
+      {{ order.resturantId?.name }}
+    </ng-container>
+    <ng-template #placeholder>Unknown Restaurant</ng-template>
   </div>
   <div class="lg:p-4 p-2 w-1/2">
-    <span class="text-center">2023-08-23T08:31:18.202Z</span>
+    <span class="text-center">{{order?.created}}</span>
   </div>
 </div>
             <!-- Add more rows as needed -->
           </div>
         </div>
+      </div>
+      <div class="flex justify-end mt-4 mr-7 mb-4 pb-4">
+        <button (click)="goToOrderPage(currentOrderPage - 1)" [disabled]="currentOrderPage === 1" class="Cancel">Prev..</button>
+        <button (click)="goToOrderPage(currentOrderPage + 1)" class="Save" >Next</button>
       </div>
     </div>
   <!-- resturants orders end -->
